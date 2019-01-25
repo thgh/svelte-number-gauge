@@ -1,0 +1,15 @@
+{
+  "module": "NumberGauge.mjs",
+  "main": "NumberGauge.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw"
+  },
+  "dependencies": {
+    "rollup": "^1.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-svelte": "^5.0.1",
+    "rollup-plugin-terser": "^4.0.2",
+    "svelte": "3.0.0-alpha19"
+  }
+}

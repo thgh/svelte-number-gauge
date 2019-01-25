@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Example</title>
+<style>
+  body {
+    margin: 2em;
+    font-family: -apple-system, sans-serif;
+  }
+  section {
+    margin-bottom: 3em;
+  }
+  .inline {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  pre {
+    background: #f5f5f5;
+    padding: 1em;
+  }
+</style>
+<script src="./NumberGauge.custom.min.js"></script>
+<script src="./NumberGauge.min.js"></script>
+
+<h1>Usage</h1>
+<section>
+<pre>
+&lt;div class="number">&lt;/div>
+&lt;script src="./NumberGauge.min.js">&lt;/script>
+&lt;script>
+  document.querySelectorAll('.number').forEach(function(elem){
+    new NumberGauge({
+      target: elem,
+      props: {
+        value: 60,
+        arrows: '30,80'
+      }
+    })
+  })
+&lt;/script>
+</pre>
+  <div class="demo"><div class="number"></div></div>
+  <script>
+    document.querySelectorAll('.number').forEach(function(elem){
+      new NumberGauge({
+        target: elem,
+        props: {
+          value: 60,
+          arrows: '30,80'
+        }
+      })
+    })
+  </script>
+</section>
+
+<h1>Usage 2 <small>(modern browsers only)</small></h1>
+<p>
+  <a href="https://caniuse.com/#feat=custom-elementsv1">Support for Custom Elements</a>
+  &middot;
+  <a href="https://github.com/webcomponents/custom-elements">Polyfill</a>
+</p>
+<section>
+<pre>
+&lt;number-gauge value="60">&lt;/number-gauge>
+&lt;script src="./NumberGauge.custom.min.js">&lt;/script>
+</pre>
+  <div class="demo"><number-gauge value="60"></number-gauge></div>
+  <script>
+  setInterval(() => document.querySelector('number-gauge').value = parseInt(Math.random() * 100), 1000)
+  </script>
+</section>
+
+
+<h1>More examples</h1>
+<section>
+  <pre>&lt;number-gauge>&lt;/number-gauge></pre>
+  <div class="demo"><number-gauge></number-gauge></div>
+</section>
+
+<section>
+  <pre>&lt;number-gauge value="60">&lt;/number-gauge></pre>
+  <div class="demo inline"><number-gauge value="0"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="10"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="20"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="30"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="40"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="50"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="60"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="70"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="80"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="90"></number-gauge></div>
+  <div class="demo inline"><number-gauge value="100"></number-gauge></div>
+</section>
+
+<section>
+  <pre>&lt;number-gauge value="12" arrows="12">&lt;/number-gauge></pre>
+  <div class="demo"><number-gauge value="12" arrows="12"></number-gauge></div>
+</section>
+
+<section>
+  <pre>&lt;number-gauge value="80" arrows="70,90">&lt;/number-gauge></pre>
+  <div class="demo"><number-gauge value="80" arrows="70,90"></number-gauge></div>
+</section>
+
+<section>
+  <div class="demo inline sync" style="font-size: 1em">
+    <number-gauge value="80" arrows="70,90"></number-gauge>
+  </div>
+  <div class="demo inline sync" style="font-size: 2em">
+    <number-gauge value="80" arrows="70,90"></number-gauge>
+  </div>
+  <div class="demo inline sync" style="font-size: 3em">
+    <number-gauge value="80" arrows="70,90"></number-gauge>
+  </div>
+  <p>size based on font-size: width = 4em</p>
+</section>
+
+<section>
+  <input type="range" min="0" max="100" oninput="update(event)" />
+</section>
+
+<script>
+  function update(event) {
+    const val = event.target.value
+    const d = document.querySelectorAll('.sync number-gauge')
+    d.forEach(elem => {
+      elem.value = val
+      elem.arrows = val * 0.9 + ',' + (100 + parseInt(val)) / 2
+      console.log(val, val * 0.9 + ',' + (100 + parseInt(val)) / 2)
+    })
+  }
+</script>
+
+<section>
+  <pre>&lt;number-gauge value="80" arrows="10,30,50,70,90">&lt;/number-gauge></pre>
+  <div class="demo"><number-gauge value="80" arrows="10,30,50,70,90"></number-gauge></div>
+</section>
