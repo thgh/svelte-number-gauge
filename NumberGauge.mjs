@@ -263,8 +263,8 @@ class SvelteComponent {
 
 function add_css() {
 	var style = createElement("style");
-	style.id = 'svelte-1te4uhk-style';
-	style.textContent = ".chart.svelte-1te4uhk{position:relative;width:4em;height:2em;box-sizing:border-box}.fill.svelte-1te4uhk{position:absolute;z-index:0;background:red;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.bg.svelte-1te4uhk{z-index:-1;background:#ccc}.max.svelte-1te4uhk{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.overflow.svelte-1te4uhk{position:absolute;width:100%;height:100%;overflow:hidden}.abs.svelte-1te4uhk{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.value.svelte-1te4uhk{position:absolute;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.white.svelte-1te4uhk{position:absolute;top:20%;left:10%;width:80%;height:160%;border-radius:100%;background:white}";
+	style.id = 'svelte-ywswcs-style';
+	style.textContent = ".chart.svelte-ywswcs{position:relative;width:4em;height:2em;box-sizing:border-box}.fill.svelte-ywswcs{position:absolute;z-index:2;background:red;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.bg.svelte-ywswcs{z-index:1;background:#ccc}.max.svelte-ywswcs{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.overflow.svelte-ywswcs{position:absolute;width:100%;height:100%;overflow:hidden}.abs.svelte-ywswcs{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.value.svelte-ywswcs{position:absolute;z-index:4;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.white.svelte-ywswcs{position:absolute;z-index:3;top:20%;left:10%;width:80%;height:160%;border-radius:100%;background:white}";
 	append(document.head, style);
 }
 
@@ -282,8 +282,8 @@ function create_each_block(ctx) {
 		c() {
 			div1 = createElement("div");
 			div0 = createElement("div");
-			div0.className = "max svelte-1te4uhk";
-			div1.className = "abs svelte-1te4uhk";
+			div0.className = "max svelte-ywswcs";
+			div1.className = "abs svelte-ywswcs";
 			setStyle(div1, "transform", "rotate(" + ctx.degree + "deg)");
 		},
 
@@ -335,14 +335,14 @@ function create_fragment(ctx) {
 			text3 = createText("\n    ");
 			div3 = createElement("div");
 			text4 = createText(ctx.value);
-			div0.className = "fill bg svelte-1te4uhk";
-			div1.className = "fill svelte-1te4uhk";
+			div0.className = "fill bg svelte-ywswcs";
+			div1.className = "fill svelte-ywswcs";
 			setStyle(div1, "transform", "rotate(-" + ctx.rotate + "deg)");
 			setStyle(div1, "background", "hsl(" + ctx.hue + ",100%," + ctx.light + "%)");
-			div2.className = "white svelte-1te4uhk";
-			div3.className = "value svelte-1te4uhk";
-			div4.className = "overflow svelte-1te4uhk";
-			div5.className = "chart svelte-1te4uhk";
+			div2.className = "white svelte-ywswcs";
+			div3.className = "value svelte-ywswcs";
+			div4.className = "overflow svelte-ywswcs";
+			div5.className = "chart svelte-ywswcs";
 		},
 
 		m(target, anchor) {
@@ -458,7 +458,7 @@ function instance($$self, $$props, $$invalidate) {
 class NumberGauge extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-1te4uhk-style")) add_css();
+		if (!document.getElementById("svelte-ywswcs-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal);
 	}
 
