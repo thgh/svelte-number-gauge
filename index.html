@@ -25,6 +25,7 @@
 <section>
 <pre>
 &lt;div class="number">&lt;/div>
+&lt;div class="number" style="font-size: 2em">&lt;/div>
 &lt;script src="./NumberGauge.min.js">&lt;/script>
 &lt;script>
   document.querySelectorAll('.number').forEach(function(elem){
@@ -38,7 +39,8 @@
   })
 &lt;/script>
 </pre>
-  <div class="demo"><div class="number"></div></div>
+  <div class="demo inline"><div class="number"></div></div>
+  <div class="demo inline"><div class="number" style="font-size: 2em"></div></div>
   <script>
     document.querySelectorAll('.number').forEach(function(elem){
       new NumberGauge({
@@ -102,9 +104,12 @@
 </section>
 
 <section>
-  <div class="demo inline sync" style="font-size: 1em">
-    <number-gauge value="80" arrows="70,90"></number-gauge>
-  </div>
+  <pre>&lt;div style="font-size: 2em">
+  &lt;number-gauge value="80" arrows="70,90">&lt;/number-gauge>
+&lt;/div>
+&lt;div style="font-size: 3em">
+  &lt;number-gauge value="80" arrows="70,90">&lt;/number-gauge>
+&lt;/div></pre>
   <div class="demo inline sync" style="font-size: 2em">
     <number-gauge value="80" arrows="70,90"></number-gauge>
   </div>
