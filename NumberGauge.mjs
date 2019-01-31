@@ -263,8 +263,8 @@ class SvelteComponent {
 
 function add_css() {
 	var style = createElement("style");
-	style.id = 'svelte-ywswcs-style';
-	style.textContent = ".chart.svelte-ywswcs{position:relative;width:4em;height:2em;box-sizing:border-box}.fill.svelte-ywswcs{position:absolute;z-index:2;background:red;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.bg.svelte-ywswcs{z-index:1;background:#ccc}.max.svelte-ywswcs{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.overflow.svelte-ywswcs{position:absolute;width:100%;height:100%;overflow:hidden}.abs.svelte-ywswcs{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.value.svelte-ywswcs{position:absolute;z-index:4;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.white.svelte-ywswcs{position:absolute;z-index:3;top:20%;left:10%;width:80%;height:160%;border-radius:100%;background:white}";
+	style.id = 'svelte-1w3m8rz-style';
+	style.textContent = ".gauge.svelte-1w3m8rz{position:relative;width:4em;height:2em;box-sizing:border-box}.gauge-fill.svelte-1w3m8rz{position:absolute;z-index:2;background:red;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.gauge-bg.svelte-1w3m8rz{z-index:1;background:#ccc}.gauge-max.svelte-1w3m8rz{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.gauge-overflow.svelte-1w3m8rz{position:absolute;width:100%;height:100%;overflow:hidden}.gauge-abs.svelte-1w3m8rz{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.gauge-value.svelte-1w3m8rz{position:absolute;z-index:4;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.gauge-white.svelte-1w3m8rz{position:absolute;z-index:3;top:20%;left:10%;width:80%;height:160%;border-radius:100%;background:white}";
 	append(document.head, style);
 }
 
@@ -274,7 +274,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (23:2) {#each degrees as degree}
+// (45:2) {#each degrees as degree}
 function create_each_block(ctx) {
 	var div1, div0;
 
@@ -282,8 +282,8 @@ function create_each_block(ctx) {
 		c() {
 			div1 = createElement("div");
 			div0 = createElement("div");
-			div0.className = "max svelte-ywswcs";
-			div1.className = "abs svelte-ywswcs";
+			div0.className = "gauge-max svelte-1w3m8rz";
+			div1.className = "gauge-abs svelte-1w3m8rz";
 			setStyle(div1, "transform", "rotate(" + ctx.degree + "deg)");
 		},
 
@@ -335,14 +335,14 @@ function create_fragment(ctx) {
 			text3 = createText("\n    ");
 			div3 = createElement("div");
 			text4 = createText(ctx.value);
-			div0.className = "fill bg svelte-ywswcs";
-			div1.className = "fill svelte-ywswcs";
+			div0.className = "gauge-fill gauge-bg svelte-1w3m8rz";
+			div1.className = "gauge-fill svelte-1w3m8rz";
 			setStyle(div1, "transform", "rotate(-" + ctx.rotate + "deg)");
-			setStyle(div1, "background", "hsl(" + ctx.hue + ",100%," + ctx.light + "%)");
-			div2.className = "white svelte-ywswcs";
-			div3.className = "value svelte-ywswcs";
-			div4.className = "overflow svelte-ywswcs";
-			div5.className = "chart svelte-ywswcs";
+			setStyle(div1, "background", bg(ctx.value));
+			div2.className = "gauge-white svelte-1w3m8rz";
+			div3.className = "gauge-value svelte-1w3m8rz";
+			div4.className = "gauge-overflow svelte-1w3m8rz";
+			div5.className = "gauge svelte-1w3m8rz";
 		},
 
 		m(target, anchor) {
@@ -390,11 +390,8 @@ function create_fragment(ctx) {
 				setStyle(div1, "transform", "rotate(-" + ctx.rotate + "deg)");
 			}
 
-			if (changed.hue || changed.light) {
-				setStyle(div1, "background", "hsl(" + ctx.hue + ",100%," + ctx.light + "%)");
-			}
-
 			if (changed.value) {
+				setStyle(div1, "background", bg(ctx.value));
 				setData(text4, ctx.value);
 			}
 		},
@@ -412,28 +409,46 @@ function create_fragment(ctx) {
 	};
 }
 
+function bg(pct) {
+  if (pct < 50) {
+    return (
+      'rgb(' +
+      interpolate(232, 57, pct / 50) +
+      ',' +
+      interpolate(82, 125, pct / 50) +
+      ',' +
+      interpolate(59, 155, pct / 50) +
+      ')'
+    )
+  }
+  return (
+    'rgb(' +
+    interpolate(128, 57, 2 - pct / 50) +
+    ',' +
+    interpolate(182, 125, 2 - pct / 50) +
+    ',' +
+    interpolate(46, 155, 2 - pct / 50) +
+    ')'
+  )
+  function interpolate(start, end, val) {
+    return (end - start) * val + start
+  }
+}
+
 function instance($$self, $$props, $$invalidate) {
 	let { value = 0, arrows = '' } = $$props;
 
   let rotate;
   let degrees;
-  let light;
-  let hue;
 
 	$$self.$set = $$props => {
 		if ('value' in $$props) $$invalidate('value', value = $$props.value);
 		if ('arrows' in $$props) $$invalidate('arrows', arrows = $$props.arrows);
 	};
 
-	$$self.$$.update = ($$dirty = { rotate: 1, value: 1, light: 1, hue: 1, degrees: 1, arrows: 1 }) => {
+	$$self.$$.update = ($$dirty = { rotate: 1, value: 1, degrees: 1, arrows: 1 }) => {
 		if ($$dirty.rotate || $$dirty.value) {
 			rotate = (100 - value) * 1.8; $$invalidate('rotate', rotate);
-		}
-		if ($$dirty.light || $$dirty.value) {
-			light = 60 - Math.max(value - 20, 0) / 5; $$invalidate('light', light);
-		}
-		if ($$dirty.hue || $$dirty.value) {
-			hue = Math.max(value * 1.5 - 30, 0); $$invalidate('hue', hue);
 		}
 		if ($$dirty.degrees || $$dirty.arrows) {
 			degrees = arrows
@@ -445,20 +460,13 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	};
 
-	return {
-		value,
-		arrows,
-		rotate,
-		degrees,
-		light,
-		hue
-	};
+	return { value, arrows, rotate, degrees };
 }
 
 class NumberGauge extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-ywswcs-style")) add_css();
+		if (!document.getElementById("svelte-1w3m8rz-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal);
 	}
 
