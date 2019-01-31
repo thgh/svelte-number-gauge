@@ -274,7 +274,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (45:2) {#each degrees as degree}
+// (51:2) {#each degrees as degree}
 function create_each_block(ctx) {
 	var div1, div0;
 
@@ -411,27 +411,33 @@ function create_fragment(ctx) {
 
 function bg(pct) {
   if (pct < 50) {
+    // 0 => 0
+    // 25 => 0
+    // 50 => 1
     return (
       'rgb(' +
-      interpolate(232, 57, pct / 50) +
+      interpolate(232, 57, pct / 25 - 1) +
       ',' +
-      interpolate(82, 125, pct / 50) +
+      interpolate(82, 125, pct / 25 - 1) +
       ',' +
-      interpolate(59, 155, pct / 50) +
+      interpolate(59, 155, pct / 25 - 1) +
       ')'
     )
   }
+  // 50 => 0
+  // 90 => 1
+  // 100 => 1
   return (
     'rgb(' +
-    interpolate(128, 57, 2 - pct / 50) +
+    interpolate(57, 128, pct / 40 - 1.25) +
     ',' +
-    interpolate(182, 125, 2 - pct / 50) +
+    interpolate(125, 182, pct / 40 - 1.25) +
     ',' +
-    interpolate(46, 155, 2 - pct / 50) +
+    interpolate(155, 46, pct / 40 - 1.25) +
     ')'
   )
   function interpolate(start, end, val) {
-    return (end - start) * val + start
+    return parseInt((end - start) * Math.min(1, Math.max(0, val)) + start)
   }
 }
 
