@@ -573,10 +573,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.0.0-alpha19:
-  version "3.0.0-alpha19"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-alpha19.tgz#227974d16bd5876ea87f86db4212041d880666ef"
-  integrity sha512-nVRXNWwb40Wj9Ba3tMfseQXZKbRx50J7YnFwzO210NBbLW7gBcdtr+FiDBKw7NkFb9pJfsBgU8y/KlriOaDGKQ==
+svelte@3.0.0-alpha20:
+  version "3.0.0-alpha20"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-alpha20.tgz#37947ab8a40704cd87146dba753b329a814a5807"
+  integrity sha512-Z8DaC4UBgSd538z7DKHtbb8btrhzcMb+J9doZArt1z2RzBhytWXAEpKDjaus4RckXzWMMOEkEYVjM8l6EMl1rg==
 
 terser@^3.14.1:
   version "3.14.1"
