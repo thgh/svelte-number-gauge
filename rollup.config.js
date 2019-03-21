@@ -5,7 +5,7 @@ import pkg from './package.json'
 
 export default [
   {
-    input: 'NumberGauge.html',
+    input: 'src/NumberGauge.svelte',
     output: [
       { file: pkg.main.replace('.js', '.custom.min.js'), format: 'iife', name: 'NumberGauge' }
     ],
@@ -19,7 +19,7 @@ export default [
     ]
   },
   {
-    input: 'NumberGauge.html',
+    input: 'src/NumberGauge.svelte',
     output: [
       { file: pkg.main.replace('.js', '.min.js'), format: 'iife', name: 'NumberGauge' }
     ],
@@ -30,7 +30,7 @@ export default [
     ]
   },
   {
-    input: 'NumberGauge.html',
+    input: 'src/NumberGauge.svelte',
     output: [
       { file: pkg.module, format: 'esm' }
     ],
