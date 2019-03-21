@@ -4,7 +4,8 @@
   }
 </script><script>
   export let value = 0
-  export let arrows = '50,70'
+  export let arrows = ''
+  export let thresholds = '50,70'
   export let colors = '#e8523b,#397d9b,#80b62e'
 
   let color
@@ -12,7 +13,7 @@
   let degrees
 
   $: {
-    const levels = String(arrows).split(',')
+    const levels = String(thresholds).split(',')
     const level = levels.indexOf(levels.find(a => value < parseInt(a, 10)))
     const colorArray = String(colors).split(',')
     color = colorArray[level] || colorArray[colorArray.length - 1]

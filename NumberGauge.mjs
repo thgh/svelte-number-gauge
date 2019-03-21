@@ -273,7 +273,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (32:2) {#each degrees as degree}
+// (33:2) {#each degrees as degree}
 function create_each_block(ctx) {
 	var div1, div0;
 
@@ -412,7 +412,7 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { value = 0, arrows = '50,70', colors = '#e8523b,#397d9b,#80b62e' } = $$props;
+	let { value = 0, arrows = '', thresholds = '50,70', colors = '#e8523b,#397d9b,#80b62e' } = $$props;
 
   let color;
   let rotate;
@@ -421,12 +421,13 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$set = $$props => {
 		if ('value' in $$props) $$invalidate('value', value = $$props.value);
 		if ('arrows' in $$props) $$invalidate('arrows', arrows = $$props.arrows);
+		if ('thresholds' in $$props) $$invalidate('thresholds', thresholds = $$props.thresholds);
 		if ('colors' in $$props) $$invalidate('colors', colors = $$props.colors);
 	};
 
-	$$self.$$.update = ($$dirty = { arrows: 1, value: 1, colors: 1 }) => {
-		if ($$dirty.arrows || $$dirty.value || $$dirty.colors) {
-        const levels = String(arrows).split(',');
+	$$self.$$.update = ($$dirty = { thresholds: 1, value: 1, colors: 1, arrows: 1 }) => {
+		if ($$dirty.thresholds || $$dirty.value || $$dirty.colors) {
+        const levels = String(thresholds).split(',');
         const level = levels.indexOf(levels.find(a => value < parseInt(a, 10)));
         const colorArray = String(colors).split(',');
         color = colorArray[level] || colorArray[colorArray.length - 1]; $$invalidate('color', color);
@@ -447,6 +448,7 @@ function instance($$self, $$props, $$invalidate) {
 	return {
 		value,
 		arrows,
+		thresholds,
 		colors,
 		color,
 		rotate,
@@ -458,7 +460,7 @@ class NumberGauge extends SvelteComponent {
 	constructor(options) {
 		super();
 		if (!document.getElementById("svelte-1w3m8rz-style")) add_css();
-		init(this, options, instance, create_fragment, safe_not_equal, ["value", "arrows", "colors"]);
+		init(this, options, instance, create_fragment, safe_not_equal, ["value", "arrows", "thresholds", "colors"]);
 	}
 }
 

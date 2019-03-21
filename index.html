@@ -34,6 +34,7 @@
       props: {
         value: 60,
         arrows: '30,80', // Default: 50,70
+        thresholds: '30,80', // Default: 50,70
         colors: '#f00,#00f,#0f0' // Default: '#e8523b,#397d9b,#80b62e'
       }
     })
@@ -48,7 +49,8 @@
         target: elem,
         props: {
           value: 60,
-          arrows: '30,80'
+          arrows: '30,80', // Default: 50,70
+          thresholds: '52,68', // Default: 50,70
         }
       })
     })
@@ -112,10 +114,10 @@
   &lt;number-gauge value="80" arrows="70,90">&lt;/number-gauge>
 &lt;/div></pre>
   <div class="demo inline sync" style="font-size: 2em">
-    <number-gauge value="80"></number-gauge>
+    <number-gauge value="80" arrows="70,90"></number-gauge>
   </div>
   <div class="demo inline sync" style="font-size: 3em">
-    <number-gauge value="80"></number-gauge>
+    <number-gauge value="80" arrows="70,90"></number-gauge>
   </div>
   <p>size based on font-size: width = 4em</p>
 </section>
