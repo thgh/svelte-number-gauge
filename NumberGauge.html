@@ -1,9 +1,22 @@
-<script>
+<script context="module">
+  function interpolate(start, end, val) {
+    return parseInt((end - start) * Math.min(1, Math.max(0, val)) + start)
+  }
+</script><script>
   export let value = 0
-  export let arrows = ''
+  export let arrows = '50,70'
+  export let colors = '#e8523b,#397d9b,#80b62e'
 
+  let color
   let rotate
   let degrees
+
+  $: {
+    const levels = String(arrows).split(',')
+    const level = levels.indexOf(levels.find(a => value < parseInt(a, 10)))
+    const colorArray = String(colors).split(',')
+    color = colorArray[level] || colorArray[colorArray.length - 1]
+  }
 
   $: rotate = (100 - value) * 1.8
 
@@ -13,38 +26,6 @@
         .map(a => parseInt(a) * 1.8)
         .filter(a => a > -1)
     : []
-
-  function bg(pct) {
-    if (pct < 50) {
-      // 0 => 0
-      // 25 => 0
-      // 50 => 1
-      return (
-        'rgb(' +
-        interpolate(232, 57, pct / 25 - 1) +
-        ',' +
-        interpolate(82, 125, pct / 25 - 1) +
-        ',' +
-        interpolate(59, 155, pct / 25 - 1) +
-        ')'
-      )
-    }
-    // 50 => 0
-    // 90 => 1
-    // 100 => 1
-    return (
-      'rgb(' +
-      interpolate(57, 128, pct / 40 - 1.25) +
-      ',' +
-      interpolate(125, 182, pct / 40 - 1.25) +
-      ',' +
-      interpolate(155, 46, pct / 40 - 1.25) +
-      ')'
-    )
-    function interpolate(start, end, val) {
-      return parseInt((end - start) * Math.min(1, Math.max(0, val)) + start)
-    }
-  }
 </script>
 
 <div class="gauge">
@@ -57,7 +38,7 @@
     <div class="gauge-fill gauge-bg"></div>
     <div
       class="gauge-fill"
-      style="transform:rotate(-{rotate}deg);background: {bg(value)};"
+      style="transform:rotate(-{rotate}deg);background: {color};"
     ></div>
     <div class="gauge-white"></div>
     <div class="gauge-value">{value}</div>

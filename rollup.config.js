@@ -12,7 +12,8 @@ export default [
     plugins: [
       resolve(),
       svelte({
-        customElement: 'number-gauge'
+        customElement: true,
+        tag: 'number-gauge'
       }),
       terser()
     ]

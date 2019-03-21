@@ -33,7 +33,8 @@
       target: elem,
       props: {
         value: 60,
-        arrows: '30,80'
+        arrows: '30,80', // Default: 50,70
+        colors: '#f00,#00f,#0f0' // Default: '#e8523b,#397d9b,#80b62e'
       }
     })
   })
@@ -111,10 +112,10 @@
   &lt;number-gauge value="80" arrows="70,90">&lt;/number-gauge>
 &lt;/div></pre>
   <div class="demo inline sync" style="font-size: 2em">
-    <number-gauge value="80" arrows="70,90"></number-gauge>
+    <number-gauge value="80"></number-gauge>
   </div>
   <div class="demo inline sync" style="font-size: 3em">
-    <number-gauge value="80" arrows="70,90"></number-gauge>
+    <number-gauge value="80"></number-gauge>
   </div>
   <p>size based on font-size: width = 4em</p>
 </section>
@@ -129,7 +130,6 @@
     const d = document.querySelectorAll('.sync number-gauge')
     d.forEach(elem => {
       elem.value = val
-      elem.arrows = val * 0.9 + ',' + (100 + parseInt(val)) / 2
       console.log(val, val * 0.9 + ',' + (100 + parseInt(val)) / 2)
     })
   }
