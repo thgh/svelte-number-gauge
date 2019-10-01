@@ -39,7 +39,7 @@
     <div class="gauge-fill gauge-bg"></div>
     <div
       class="gauge-fill"
-      style="transform:rotate(-{rotate}deg);background: {color};"
+      style="transform:rotate(-{rotate}deg);box-shadow: inset 0 0 0 1em {color};"
     ></div>
     <div class="gauge-white"></div>
     <div class="gauge-value">{value}</div>
@@ -56,7 +56,6 @@
   .gauge-fill {
     position: absolute;
     z-index: 2;
-    background: red;
     width: 100%;
     height: 100%;
     border-radius: 2em 2em 0 0;
@@ -65,7 +64,7 @@
   }
   .gauge-bg {
     z-index: 1;
-    background: #ccc;
+    box-shadow: inset 0 0 0 1em #ccc;
   }
   .gauge-max {
     position: absolute;
@@ -108,10 +107,10 @@
   .gauge-white {
     position: absolute;
     z-index: 3;
-    top: 20%;
-    left: 10%;
-    width: 80%;
-    height: 160%;
+    top: 25%;
+    left: 12.5%;
+    width: 75%;
+    height: 150%;
     border-radius: 100%;
     background: white;
   }

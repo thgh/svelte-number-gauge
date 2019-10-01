@@ -262,8 +262,8 @@ class SvelteComponent {
 
 function add_css() {
 	var style = element("style");
-	style.id = 'svelte-1w3m8rz-style';
-	style.textContent = ".gauge.svelte-1w3m8rz{position:relative;width:4em;height:2em;box-sizing:border-box}.gauge-fill.svelte-1w3m8rz{position:absolute;z-index:2;background:red;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.gauge-bg.svelte-1w3m8rz{z-index:1;background:#ccc}.gauge-max.svelte-1w3m8rz{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.gauge-overflow.svelte-1w3m8rz{position:absolute;width:100%;height:100%;overflow:hidden}.gauge-abs.svelte-1w3m8rz{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.gauge-value.svelte-1w3m8rz{position:absolute;z-index:4;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.gauge-white.svelte-1w3m8rz{position:absolute;z-index:3;top:20%;left:10%;width:80%;height:160%;border-radius:100%;background:white}";
+	style.id = 'svelte-pxwx94-style';
+	style.textContent = ".gauge.svelte-pxwx94{position:relative;width:4em;height:2em;box-sizing:border-box}.gauge-fill.svelte-pxwx94{position:absolute;z-index:2;width:100%;height:100%;border-radius:2em 2em 0 0;transition:transform 0.2s;transform-origin:50% 100%}.gauge-bg.svelte-pxwx94{z-index:1;box-shadow:inset 0 0 0 1em #ccc}.gauge-max.svelte-pxwx94{position:absolute;z-index:2;left:-6px;top:-6px;width:6px;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:6px solid #000}.gauge-overflow.svelte-pxwx94{position:absolute;width:100%;height:100%;overflow:hidden}.gauge-abs.svelte-pxwx94{position:absolute;z-index:0;background:red;width:100%;height:0;border-radius:2em 2em 0 0;transition:transform 0.2s;left:0%;top:100%}.gauge-value.svelte-pxwx94{position:absolute;z-index:4;bottom:0;left:0;right:0;text-align:center;font-weight:bold;line-height:1em}.gauge-white.svelte-pxwx94{position:absolute;z-index:3;top:25%;left:12.5%;width:75%;height:150%;border-radius:100%;background:white}";
 	append(document.head, style);
 }
 
@@ -281,8 +281,8 @@ function create_each_block(ctx) {
 		c() {
 			div1 = element("div");
 			div0 = element("div");
-			div0.className = "gauge-max svelte-1w3m8rz";
-			div1.className = "gauge-abs svelte-1w3m8rz";
+			div0.className = "gauge-max svelte-pxwx94";
+			div1.className = "gauge-abs svelte-pxwx94";
 			set_style(div1, "transform", "rotate(" + ctx.degree + "deg)");
 		},
 
@@ -334,14 +334,14 @@ function create_fragment(ctx) {
 			t3 = space();
 			div3 = element("div");
 			t4 = text(ctx.value);
-			div0.className = "gauge-fill gauge-bg svelte-1w3m8rz";
-			div1.className = "gauge-fill svelte-1w3m8rz";
+			div0.className = "gauge-fill gauge-bg svelte-pxwx94";
+			div1.className = "gauge-fill svelte-pxwx94";
 			set_style(div1, "transform", "rotate(-" + ctx.rotate + "deg)");
-			set_style(div1, "background", ctx.color);
-			div2.className = "gauge-white svelte-1w3m8rz";
-			div3.className = "gauge-value svelte-1w3m8rz";
-			div4.className = "gauge-overflow svelte-1w3m8rz";
-			div5.className = "gauge svelte-1w3m8rz";
+			set_style(div1, "box-shadow", "inset 0 0 0 1em " + ctx.color);
+			div2.className = "gauge-white svelte-pxwx94";
+			div3.className = "gauge-value svelte-pxwx94";
+			div4.className = "gauge-overflow svelte-pxwx94";
+			div5.className = "gauge svelte-pxwx94";
 		},
 
 		m(target, anchor) {
@@ -390,7 +390,7 @@ function create_fragment(ctx) {
 			}
 
 			if (changed.color) {
-				set_style(div1, "background", ctx.color);
+				set_style(div1, "box-shadow", "inset 0 0 0 1em " + ctx.color);
 			}
 
 			if (changed.value) {
@@ -459,7 +459,7 @@ function instance($$self, $$props, $$invalidate) {
 class NumberGauge extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-1w3m8rz-style")) add_css();
+		if (!document.getElementById("svelte-pxwx94-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal, ["value", "arrows", "thresholds", "colors"]);
 	}
 }
